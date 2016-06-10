@@ -13,7 +13,7 @@
                     {{--<p>{{ $product->product_color }}</p>--}}
                     <br>
                     {{--<p> Description: {{ $product->product_description }}</p>--}}
-                    <a href="{{ url('product', $product->id) }}" class="btn btn-primary">View product</a>
+                    <a href="{{ url('product', $product->id) }}" class="btn btn-primary">View product details</a>
                 </div>
             @endforeach
         </div>

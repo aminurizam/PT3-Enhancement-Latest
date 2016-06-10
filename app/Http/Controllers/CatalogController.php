@@ -14,4 +14,10 @@ class CatalogController extends Controller
         // dd($products);
         return view('product',compact('products'));
     }
+
+    public function viewProduct($id){
+        $product = Product::findOrFail($id);//get single product from db
+        //dd($product);
+        return view('view-product', compact('product'));
+    }
 }
