@@ -23,4 +23,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function orderStaff() {
+        return $this->hasMany(Order::class, 'staff_id')->withTimestamps();
+    }
+
+    public function orderCustomer() {
+        return $this->hasMany(Order::class, 'customer_id')->withTimestamps();
+    }
+
+    public function staff() {
+        return $this->hasOne(Staff::class, 'user_id');
+    }
+
+    public function customer() {
+        return $this->hasOne(Customer::class, 'user_id');
+    }
 }

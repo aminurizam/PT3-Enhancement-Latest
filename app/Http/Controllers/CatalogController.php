@@ -1,10 +1,15 @@
 <?php
 
+
 namespace App\Http\Controllers;
 use App\Product;
+use App\OrderDetail;
+use App\Order;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class CatalogController extends Controller
 {
@@ -19,5 +24,70 @@ class CatalogController extends Controller
         $product = Product::findOrFail($id);//get single product from db
         //dd($product);
         return view('view-product', compact('product'));
+    }
+
+    public function addToCart(Request $request){
+        //dd($request)->all(); //debug
+        $validator = Validator::make($request->all(), [
+            'quantity' => 'required|numeric|min:1|max:10',
+
+        ]);
+
+        if($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+        //01 check if user has active cart
+        $cart = Order::where('status', 'active')->where('customer_id', Auth::user()->id)->first();
+        //02 if has active cart, add product to cart
+        if($cart) {
+            $orderDetails = new OrderDetail();
+            $orderDetails->order_id = $cart->id;
+            $orderDetails->product_id = $request->product_id;
+            $orderDetails->quantity = $request->quantity;
+            $orderDetails->save();
+        } else {
+
+            //03 else if no active cart, create new order status active + add item
+            $newCart = new Order();
+            $newCart->customer_id = Auth::user()->id;
+            $newCart->staff_id = null;
+            $newCart->status = 'active';
+            $newCart->save();
+            
+            $orderDetails = new OrderDetail();
+            $orderDetails-> order_id = $newCart->id; //shopping bag yg baru drpd previous
+            $orderDetails-> product_id = $request->product_id;
+            $orderDetails-> quantity = $request->quantity;
+            $orderDetails->save();
+            
+        }
+        //04 back to product page
+        return redirect()->back();
+    }
+
+    public function viewCart() {
+        $cart = Order::with('orderDetail','orderDetail.product')->where('status','active')
+                                ->where('customer_id', Auth::user()->id)->first();
+        //calculate the subtotal
+        $subTotal = 0;
+        foreach ($cart->orderDetail as $c){
+            $TotalEachProduct = $c->quantity * $c->product->product_price;
+            $subTotal+=$TotalEachProduct;
+        }
+
+        //calculate the gst total from subtotal
+        $gst = 0.06 * $subTotal;
+
+        return view('shopping-cart',compact('cart','subTotal','gst'));
+    }
+
+    public function removeProduct($id){
+        $cart = Order::with('orderDetail','orderDetail.product')->where('status','active')
+            ->where('customer_id', Auth::user()->id)->first();
+
+        $orderDetail = OrderDetail::where('order_id',$cart->id)->where('id',$id)->first();
+        $orderDetail->delete();
+
+        return redirect()->back();
     }
 }

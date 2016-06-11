@@ -1,7 +1,63 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div id="catalog" class="container">
+        <div class="col-sm-3">
+            <div class="left-sidebar">
+                <h2>Category</h2>
+                <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordian" href="#brand">
+                                    <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                    Brand
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="brand" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul>
+                                    <li><a href="#">Adidas </a></li>
+                                    <li><a href="#">Indiana Jones </a></li>
+                                    <li><a href="#">Dickies</a></li>
+                                    <li><a href="#">Nike</a></li>
+                                    <li><a href="#">The North Face</a></li>
+                                    <li><a href="#">Columbia</a></li>
+                                    <li><a href="#">Fox</a></li>
+                                    <li><a href="#">Billabong</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordian" href="#type">
+                                    <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                    Type
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="type" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul>
+                                    <li><a href="#">Baseball Caps</a></li>
+                                    <li><a href="#">Beanies</a></li>
+                                    <li><a href="#">Cowboy Hats</a></li>
+                                    <li><a href="#">Newsboy Caps</a></li>
+                                    <li><a href="#">Visors</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!--/category-products-->
+
+
+            </div>
+        </div>
         <div class="row">
             @foreach($products as $product)
                 <div class="col-md-4">

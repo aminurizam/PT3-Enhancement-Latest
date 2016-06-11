@@ -32,3 +32,8 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin'], function ()
     Route::resource('staff', 'StaffController');
 
 });
+
+Route::post('addToCart',['middleware' => ['web','auth'],'uses' => 'CatalogController@addToCart']);//route to process the add to cart
+//'web' access dlm kernel.php method. //'auth' cek user dah log in ke belum.
+Route::get('shopping-cart',['middleware' => ['web','auth'], 'uses' => 'CatalogController@viewCart']); //route to vewi cart
+Route::delete('shopping-cart/product/{id}', ['middleware' => ['web','auth'], 'uses' => 'CatalogController@removeProduct']);
