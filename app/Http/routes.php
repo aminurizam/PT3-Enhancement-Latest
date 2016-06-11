@@ -37,3 +37,4 @@ Route::post('addToCart',['middleware' => ['web','auth'],'uses' => 'CatalogContro
 //'web' access dlm kernel.php method. //'auth' cek user dah log in ke belum.
 Route::get('shopping-cart',['middleware' => ['web','auth'], 'uses' => 'CatalogController@viewCart']); //route to vewi cart
 Route::delete('shopping-cart/product/{id}', ['middleware' => ['web','auth'], 'uses' => 'CatalogController@removeProduct']);
+Route::get('order-history',['middleware' => ['web','auth'], 'uses' => 'CatalogController@OrderHistory']);

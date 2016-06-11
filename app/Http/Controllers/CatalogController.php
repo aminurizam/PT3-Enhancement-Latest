@@ -9,14 +9,24 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 
 class CatalogController extends Controller
 {
     public function catalog() {
-        //get all product paginate with 20 item per page
-        $products = Product::paginate(6);
-        // dd($products);
+//        //get all product paginate with 20 item per page
+//        $products = Product::paginate(6);
+//        // dd($products);
+//        return view('product',compact('products'));
+        $category = Input::get('category');
+
+        if($category){
+            $products = Product::where('product_brand',$category)->paginate(6);
+        } else {
+            $products = Product::paginate(6);
+        }
+
         return view('product',compact('products'));
     }
 
@@ -53,6 +63,10 @@ class CatalogController extends Controller
             $newCart->staff_id = null;
             $newCart->status = 'active';
             $newCart->save();
+
+            $newCart -> update([
+                'order_number'=>'ORD00'.(1000+$newCart->id),
+            ]);
             
             $orderDetails = new OrderDetail();
             $orderDetails-> order_id = $newCart->id; //shopping bag yg baru drpd previous
@@ -62,7 +76,7 @@ class CatalogController extends Controller
             
         }
         //04 back to product page
-        return redirect()->back();
+        return redirect(url('shopping-cart'));
     }
 
     public function viewCart() {
@@ -89,5 +103,10 @@ class CatalogController extends Controller
         $orderDetail->delete();
 
         return redirect()->back();
+    }
+
+    public function OrderHistory() {
+        $cart = Order::with('orderDetail','orderDetail.product')->where('customer_id', Auth::user()->id)->get();
+        return view('order-history', compact('cart'));
     }
 }
