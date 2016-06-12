@@ -76,7 +76,7 @@
                         <td>
                             <form action="{{ url('checkout') }}" method="post">
                                 {!! csrf_field() !!}
-                                <input type="hidden" name="total" value="{{ number_format($subTotal + $gst, 2, '.',' ') }}">
+                                <input type="hidden" name="total" value="{{ number_format($subTotal + $gst, 2, '.','') }}">
                                 <button type="submit" class="btn btn-success">
                                 Checkout <span class="glyphicon glyphicon-play"></span>
                                 </button></td>

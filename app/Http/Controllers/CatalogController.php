@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\OrderDetail;
 use App\Order;
+use App\Payment;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -134,5 +136,28 @@ class CatalogController extends Controller
         $order = Order::with('orderDetail','orderDetail.product')->findOrFail($id);
 
         return view('payment',compact('order'));
+    }
+    
+    public function storePayment(Request $request, $id){
+//       dd($request->all());
+        $payment = new Payment();
+        $payment->order_id = $id;
+        $payment->total = $request->total;
+        $payment->customer_id = Auth::user()->id;
+        $payment->card_number = $request->card_number;
+        $payment->bank_name = $request->bank_name;
+        $payment->save();
+
+        return redirect(url('receipt', $payment->id));
+    }
+
+    public function showReceipt($id){
+        $customer = User::with('customer')->findOrFail(Auth::user()->id);
+        $payment = Payment::with('order','order.orderDetail','customer')->findOrFail($id);
+        $order = Order::with('orderDetail', 'orderDetail.product')->findOrFail($payment->order_id);
+        $orderDetail = OrderDetail::where('order_id', $order->id)->get();
+
+//        dd($payment);
+        return view('receipt',compact('payment','customer','order','orderDetail'));
     }
 }

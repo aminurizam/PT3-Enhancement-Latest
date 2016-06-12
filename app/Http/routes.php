@@ -38,5 +38,7 @@ Route::post('addToCart',['middleware' => ['web','auth'],'uses' => 'CatalogContro
 Route::get('shopping-cart',['middleware' => ['web','auth'], 'uses' => 'CatalogController@viewCart']); //route to vewi cart
 Route::delete('shopping-cart/product/{id}', ['middleware' => ['web','auth'], 'uses' => 'CatalogController@removeProduct']);
 Route::get('order-history',['middleware' => ['web','auth'], 'uses' => 'CatalogController@OrderHistory']);
-Route::post('checkout',['middleware' => ['web','auth'], 'uses' => 'CatalogController@checkout']);
-Route::get('payment/{id}',['middleware' => ['web','auth'], 'uses' => 'CatalogController@makePayment']);
+Route::post('checkout',['middleware' => ['web','auth'], 'uses' => 'CatalogController@checkout']);//do checkout
+Route::get('payment/{id}',['middleware' => ['web','auth'], 'uses' => 'CatalogController@makePayment']);//do payment after checkout
+Route::post('payment/{id}',['middleware' => ['web','auth'], 'uses' => 'CatalogController@storePayment']);//save payment to db
+Route::get('receipt/{id}', ['middlware' => ['web','auth'], 'uses' => 'CatalogController@showReceipt']);

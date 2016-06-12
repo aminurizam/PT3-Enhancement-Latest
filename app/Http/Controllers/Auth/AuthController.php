@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -28,7 +29,18 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    public function redirectPath(){
+        $user = Auth::user();
+
+        if($user->user_group == 'admin'){
+            $redirectPath = 'admin/dashboard';
+        } else if($user->user_group == 'customer') {
+            $redirectPath = '/';
+        } else {
+            $redirectPath = abort(401); //error 401
+        }
+        return $redirectPath;
+    }
 
     /**
      * Create a new authentication controller instance.
@@ -67,6 +79,7 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'user_group' => 'customer',
         ]);
     }
 }

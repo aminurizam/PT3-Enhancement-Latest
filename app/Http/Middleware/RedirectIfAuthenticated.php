@@ -18,9 +18,12 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/');
+            if(Auth::user()->user_group == 'admin'){
+                return redirect('admin/dashboard');
+            } else {
+                return redirect('shopping-cart');
+            }
         }
-
         return $next($request);
     }
 }
