@@ -56,8 +56,8 @@
 
             <div class="row">
                 <div class="col-md-6 pull-right" style="text-align: right">
-                    <a href="" class="btn btn-primary">View Invoice</a>
-                    <a href="" class="btn btn-primary">View Receipt</a>
+                    <a href="{{ url('pdf/invoice', $order->id) }}" target="_blank" class="btn btn-primary">View Invoice</a>
+                    <a href="{{ url('pdf/receipt', $order->id) }}" target="_blank" class="btn btn-primary">View Receipt</a>
                 </div>
             </div>
         </div>

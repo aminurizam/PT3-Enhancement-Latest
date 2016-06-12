@@ -42,3 +42,7 @@ Route::post('checkout',['middleware' => ['web','auth'], 'uses' => 'CatalogContro
 Route::get('payment/{id}',['middleware' => ['web','auth'], 'uses' => 'CatalogController@makePayment']);//do payment after checkout
 Route::post('payment/{id}',['middleware' => ['web','auth'], 'uses' => 'CatalogController@storePayment']);//save payment to db
 Route::get('receipt/{id}', ['middlware' => ['web','auth'], 'uses' => 'CatalogController@showReceipt']);
+
+//pdf
+Route::get('pdf/invoice/{orderID}', ['middleware' => ['web','auth'], 'uses' => 'CatalogController@showInvoicePDF']);
+Route::get('pdf/receipt/{orderID}', ['middleware' => ['web', 'auth'], 'uses' => 'CatalogController@showReceiptPDF']);

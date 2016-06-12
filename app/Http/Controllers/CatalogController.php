@@ -7,6 +7,7 @@ use App\OrderDetail;
 use App\Order;
 use App\Payment;
 use App\User;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -22,13 +23,18 @@ class CatalogController extends Controller
 //        // dd($products);
 //        return view('product',compact('products'));
         $category = Input::get('brand');
+        $type = Input::get('type');
 
         if($category){
             $products = Product::where('product_brand',$category)->paginate(6);
+        } else if($type) {
+            $products = Product::where('product_type',$type)->paginate(6);
         } else {
             $products = Product::paginate(6);
         }
         return view('product',compact('products'));
+
+
 
        
     }
@@ -159,5 +165,34 @@ class CatalogController extends Controller
 
 //        dd($payment);
         return view('receipt',compact('payment','customer','order','orderDetail'));
+    }
+
+    public function showInvoicePDF($orderID) {
+//        dd($orderID);
+        $order = Order::with('orderDetail', 'orderDetail.product')->findOrFail($orderID);
+        $user = User::findOrFail(Auth::user()->id);
+        $subTotal = 0;
+        foreach($order->orderDetail as $c) {
+            $TotalEachProduct = $c->quantity * $c->product->product_price;
+            $subTotal+=$TotalEachProduct;
+        }
+        $pdf = app('dompdf.wrapper');
+        $pdf->loadView('pdf.invoice', compact('order', 'user', 'subTotal'));
+        return $pdf->stream('invoice.pdf');
+    }
+    public function showReceiptPDF($orderID) {
+        $order = Order::with('orderDetail', 'orderDetail.product')->findOrFail($orderID);
+        $user = User::findOrFail(Auth::user()->id);
+
+        $subTotal = 0;
+        foreach($order->orderDetail as $c) {
+            $TotalEachProduct = $c->quantity * $c->product->product_price;
+            $subTotal+=$TotalEachProduct;
+        }
+
+        $payment = Payment::where('order_id', $order->id)->first();
+        $pdf = app('dompdf.wrapper');
+        $pdf->loadView('pdf.receipt', compact('order', 'user', 'subTotal', 'payment'));
+        return $pdf->stream('receipt.pdf');
     }
 }

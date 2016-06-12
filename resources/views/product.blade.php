@@ -100,11 +100,11 @@
                                 <div id="type" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul>
-                                            <li><a href="{{ url('?brand=Baseball+Caps') }}">Baseball Caps</a></li>
-                                            <li><a href="#">Beanies</a></li>
-                                            <li><a href="#">Cowboy Hats</a></li>
-                                            <li><a href="#">Newsboy Caps</a></li>
-                                            <li><a href="#">Visors</a></li>
+                                            <li><a href="{{ url('?type=Baseball+Caps') }}">Baseball Caps</a></li>
+                                            <li><a href="{{ url('?type=Beanies') }}">Beanies</a></li>
+                                            <li><a href="{{ url('?type=Cowboy+Hats') }}">Cowboy Hats</a></li>
+                                            <li><a href="{{ url('?type=Newsboy+Caps') }}">Newsboy Caps</a></li>
+                                            <li><a href="{{ url('?type=Visors') }}">Visors</a></li>
                                         </ul>
                                     </div>
                                 </div>
