@@ -9,7 +9,7 @@
             </div>
             <div class="col-md-8">
                 <hr>
-                <h3>{{ $product->product_name }}</h3>
+                <h1>{{ $product->product_name }}</h1>
                 <p> Price: RM {{ $product->product_price }}</p>
                 <p> Brand: {{ $product->product_brand }}</p>
                 <p> Type: {{ $product->product_type }}</p>

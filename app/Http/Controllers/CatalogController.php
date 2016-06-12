@@ -19,15 +19,16 @@ class CatalogController extends Controller
 //        $products = Product::paginate(6);
 //        // dd($products);
 //        return view('product',compact('products'));
-        $category = Input::get('category');
+        $category = Input::get('brand');
 
         if($category){
             $products = Product::where('product_brand',$category)->paginate(6);
         } else {
             $products = Product::paginate(6);
         }
-
         return view('product',compact('products'));
+
+       
     }
 
     public function viewProduct($id){
@@ -108,5 +109,30 @@ class CatalogController extends Controller
     public function OrderHistory() {
         $cart = Order::with('orderDetail','orderDetail.product')->where('customer_id', Auth::user()->id)->get();
         return view('order-history', compact('cart'));
+    }
+
+    public function checkout(Request $request){
+        //dd($request->all());
+        //get active order
+        $cart = Order::with('orderDetail','orderDetail.product')->where('status','active')
+            ->where('customer_id', Auth::user()->id)->first();
+
+        //update order status and total to pay
+        if($cart){
+            $cart->update([
+                'status'=>'checkout',
+                'total'=> $request->total,
+            ]);
+            return redirect(url('payment',$cart->id));
+        } else {
+            return redirect()->back();
+        }
+    }
+    
+    public function makePayment($id){
+//        dd($id);
+        $order = Order::with('orderDetail','orderDetail.product')->findOrFail($id);
+
+        return view('payment',compact('order'));
     }
 }

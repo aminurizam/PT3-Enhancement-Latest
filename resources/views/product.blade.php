@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.home')
 
 @section('content')
 
@@ -61,22 +61,63 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Category</h3>
-                        </div>
-                        <div class="panel-body">
-                            <ul>
-                                <li><a href="{{ url('?category=Adidas') }}">Adidas</a></li>
-                                <li><a href="{{ url('?category=Nike') }}">Nike</a></li>
-                            </ul>
-                        </div>
+                    <div class="left-sidebar">
+                        <h2>Category</h2>
+                        <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordian" href="#brand">
+                                            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                            Brand
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="brand" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul>
+                                            <li><a href="{{ url('?brand=Adidas') }}">Adidas</a></li>
+                                            <li><a href="{{ url('?brand=Indiana+Jones') }}">Indiana Jones</a></li>
+                                            <li><a href="{{ url('?brand=Dickies') }}">Dickies</a></li>
+                                            <li><a href="{{ url('?brand=Nike') }}">Nike</a></li>
+                                            <li><a href="{{ url('?brand=The+North+Face') }}">The North Face</a></li>
+                                            <li><a href="{{ url('?brand=Columbia') }}">Columbia</a></li>
+                                            <li><a href="{{ url('?brand=Fox') }}">Fox</a></li>
+                                            <li><a href="{{ url('?brand=Billabong') }}">Billabong</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordian" href="#type">
+                                            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                            Type
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="type" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul>
+                                            <li><a href="{{ url('?brand=Baseball+Caps') }}">Baseball Caps</a></li>
+                                            <li><a href="#">Beanies</a></li>
+                                            <li><a href="#">Cowboy Hats</a></li>
+                                            <li><a href="#">Newsboy Caps</a></li>
+                                            <li><a href="#">Visors</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div><!--/category-products-->
                     </div>
                 </div>
+
                 <div class="col-md-9">
                     @foreach($products as $product)
-                        <div class="col-md-4">
-                            <h4>{{ $product->product_name }}</h4>
+                        <div class="col-md-4" id="catalog">
+                            <h4><strong>{{ $product->product_name }}</strong></h4>
                             <a><img src="{{ asset('products/'.$product->product_image) }} " class="img-responsive"></a> {{--asset tu access folder public--}}
                             <p> RM {{ $product->product_price }}</p>
                             <p> {{ $product->product_brand }}</p>

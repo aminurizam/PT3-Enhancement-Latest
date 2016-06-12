@@ -38,3 +38,5 @@ Route::post('addToCart',['middleware' => ['web','auth'],'uses' => 'CatalogContro
 Route::get('shopping-cart',['middleware' => ['web','auth'], 'uses' => 'CatalogController@viewCart']); //route to vewi cart
 Route::delete('shopping-cart/product/{id}', ['middleware' => ['web','auth'], 'uses' => 'CatalogController@removeProduct']);
 Route::get('order-history',['middleware' => ['web','auth'], 'uses' => 'CatalogController@OrderHistory']);
+Route::post('checkout',['middleware' => ['web','auth'], 'uses' => 'CatalogController@checkout']);
+Route::get('payment/{id}',['middleware' => ['web','auth'], 'uses' => 'CatalogController@makePayment']);

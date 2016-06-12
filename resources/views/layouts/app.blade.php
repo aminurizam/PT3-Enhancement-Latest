@@ -17,7 +17,7 @@
 
     <style>
         #catalog img.img-responsive {
-            height: 250px;
+            height: 165px;
         }
         body {
             font-family: 'Lato';

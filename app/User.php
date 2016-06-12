@@ -39,4 +39,8 @@ class User extends Authenticatable
     public function customer() {
         return $this->hasOne(Customer::class, 'user_id');
     }
+
+    public function payment(){
+        return $this->hasMany(User::class,'customer_id');
+    }
 }
