@@ -1,3 +1,23 @@
 #catalog img.img-responsive{
-    height: 250px;
+    height: 165px;
+}
+
+#catalog h4 {
+    color: #0000cc;
+    font-size: 15px;
+}
+
+#catalog p {
+    color: black;
+}
+
+#catalog .btn.btn-primary {
+    background: #1EC0D2;
+}
+
+#footer {
+    background: #1EC0D2;
+}
+
+#pagination {
 }

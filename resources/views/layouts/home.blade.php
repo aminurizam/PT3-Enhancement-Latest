@@ -17,7 +17,7 @@
 </head>
     <body>
     <header id="header"><!--header-->
-        <div class="header_top"><!--header_top-->
+        <div class="header_top" id="header"><!--header_top-->
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
@@ -98,7 +98,7 @@
     @yield('content');
 
     <footer>
-        <div class="footer-bottom">
+        <div class="footer-bottom" id="footer">
             <div class="container">
                 <div class="row">
                     <p class="pull-left">This website is for educational purpose only. It is not related to any physical store or company with same name or business model.<p>

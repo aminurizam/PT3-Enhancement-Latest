@@ -11,6 +11,6 @@ class AdminController extends Controller
 {
     public function dashboard(){
         $user = Auth::user();
-        return view('admin-panel.dashboard',compact('user'));
+        return view('admin-panel.dashboard', compact('user'));
     }
 }
