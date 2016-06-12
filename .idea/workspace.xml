@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c84f2b8-165a-40b5-abc1-b6faf5085419" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/payment.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/CatalogController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/CatalogController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Order.php" afterPath="$PROJECT_DIR$/app/Order.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/User.php" afterPath="$PROJECT_DIR$/app/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/home.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/home.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/product.blade.php" afterPath="$PROJECT_DIR$/resources/views/product.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/shopping-cart.blade.php" afterPath="$PROJECT_DIR$/resources/views/shopping-cart.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/view-product.blade.php" afterPath="$PROJECT_DIR$/resources/views/view-product.blade.php" />
     </list>
     <ignored path="PT3-Enhancement-Latest.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,7 +36,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="payment.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="payment.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/payment.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -56,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+            <state relative-caret-position="-6">
+              <caret line="24" column="82" selection-start-line="24" selection-start-column="82" selection-end-line="33" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -447,7 +437,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1465489562458</updated>
-      <workItem from="1465489563599" duration="68390000" />
+      <workItem from="1465489563599" duration="68502000" />
     </task>
     <task id="LOCAL-00001" summary="6.48">
       <created>1465598932951</created>
@@ -505,11 +495,18 @@
       <option name="project" value="LOCAL" />
       <updated>1465676135307</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="12.30">
+      <created>1465724784523</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1465724784523</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68390000" />
+    <option name="totallyTimeSpent" value="68502000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="30" width="1368" height="706" extended-state="6" />
@@ -879,14 +876,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Payment.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
@@ -933,6 +922,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="24" column="82" selection-start-line="24" selection-start-column="82" selection-end-line="33" selection-end-column="3" />
           <folding />
         </state>
       </provider>
