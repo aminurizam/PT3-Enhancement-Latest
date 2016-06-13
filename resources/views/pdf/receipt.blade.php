@@ -48,18 +48,17 @@
 <table border="0" width="100%">
     <tr>
         <td class="logo">
-            <h1>MEGA<span>furniture</span></h1>
+            <h1>TOPMEN<span></span></h1>
             <p>The best furniture store in town!</p>
         </td>
         <td class="address-company" style="text-align: right">
-            <h4>Mega Furniture Sdn Bhd (603640-V)</h4>
+            <h4>TOPMEN Sdn. Bhd. (182372-A)</h4>
             <p style="margin-top: 0px;">
-                19-2, Wisma Laxton, Jalan Desa, Taman Desa,<br/>
-                Off Jalan Klang Lama,<br/>
-                58100 Kuala Lumpur,<br/>
-                Malaysia.<br/><br/>
-                T +(603) 7987 1191 | F +(603) 7987 2191 |<br/><br/>
-                GST No: 000817143808
+                TB1283, Centrepoint, Jalan Maharajalela<br/>
+                91029 Kota Kinabalu,<br/>
+                Sabah, Malaysia.<br/><br/>
+                T +(603) 182 1238<br/><br/>
+                GST No: 0023819239123
             </p>
         </td>
     </tr>
@@ -79,8 +78,6 @@
         <td>
             <b>Invoice & Shipping To</b><br>
             {{ $user->name }}<br>
-            {{--{{ $shippingAddress->address_1 }} {{ $shippingAddress->address_2 }}<br>--}}
-            {{--{{ $shippingAddress->city }}, {{ $shippingAddress->state }}, {{ $shippingAddress->postal_code }}<br>--}}
             Malaysia<br>
         </td>
         <td>

@@ -17,7 +17,7 @@
 </head>
     <body>
     <header id="header"><!--header-->
-        <div class="header_top" id="header"><!--header_top-->
+        <div class="header_top" id="header" style="background: #1EC0D2"><!--header_top-->
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
@@ -45,9 +45,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4">
-                        <!-- <div class="logo pull-left">
-                            <a href="index.html"><img src="images/home/logo.png" alt="" style="width:40%;"></a>
-                        </div> -->
+                        <div class="logo pull-left" style="color: black; font-size: x-large; font-weight: bold;">
+                            <a href="{{ url('/') }}"><img src="images/logo.png" alt="" style="width:20%;"></a>
+                            TOPMEN
+                        </div>
 
                     </div>
                     <div class="col-sm-8">
@@ -56,6 +57,16 @@
                                 @if (Auth::guest())
                                     <li><a href="{{ url('/register') }}"><i class="fa fa-user"></i> Register</a></li>
                                     <li><a href="{{ url('/login') }}"><i class="fa fa-lock"></i> Login</a></li>
+                                @else
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                            {{ Auth::user()->name }} <span class="caret"></span>
+                                        </a>
+
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                        </ul>
+                                    </li>
                                 @endif
                             </ul>
                         </div>
@@ -64,37 +75,6 @@
             </div>
         </div><!--/header-middle-->
 
-        <div class="header-bottom"><!--header-bottom-->
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-9">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div class="mainmenu pull-left">
-                            <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="index.html" class="active">Home</a></li>
-                                <li><a href="#" >About Us</a></li>
-
-                                <li><a href="#">Contact Us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="search_box pull-right">
-                            <input type="text" placeholder="Search"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!--/header-bottom-->
-    </header><!--/header-->
-
     @yield('content');
 
     <footer>
@@ -102,6 +82,10 @@
             <div class="container">
                 <div class="row">
                     <p class="pull-left">This website is for educational purpose only. It is not related to any physical store or company with same name or business model.<p>
+                </div>
+                <div class="row">
+                    <p>A150547 - Muhammad Aminurizam Bin Zamraney</p>
+                    <p>TTTP2543 - Pengaturcaraan Web</p>
                 </div>
             </div>
         </div>

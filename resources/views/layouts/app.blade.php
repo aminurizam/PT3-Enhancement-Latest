@@ -17,7 +17,7 @@
 
     <style>
         #catalog img.img-responsive {
-            height: 165px;
+            height: 250px;
         }
         body {
             font-family: 'Lato';
@@ -43,7 +43,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                Topmen
+                TOPMEN
             </a>
         </div>
 
